@@ -4,6 +4,9 @@ canvas.width = 1024
 canvas.height = 576
 
 const myPokemonId = localStorage.getItem('starter');
+const attackDisplay = document.getElementById('attack-display')
+const attacks = document.getElementById('attacks')
+
 //moves
 const move1 = document.getElementById('move1')
 const move2 = document.getElementById('move2')
@@ -164,6 +167,7 @@ const battle = {
 }
 
 function animate(){
+ 
   const animationId = window.requestAnimationFrame(animate)
   background.draw()
   boundaries.forEach(boundary => {
@@ -175,6 +179,9 @@ function animate(){
 
   player.draw()
   
+  attacks.classList.remove('active')
+  attackDisplay.classList.remove('active')
+
   if (battle.initiated) return
 
   if (keys.up.pressed || keys.down.pressed || keys.right.pressed || keys.left.pressed){
@@ -359,7 +366,7 @@ function getPokemonDetails(myPokemonId) {
             const moves = moveDetails.map(move => ({ name: move.name, power: move.power }));
             const myPokemon = {
               moves: moves,
-              HP: (pokemonData.stats[0].base_stat) * 10, // Assuming HP is the first stat
+              HP: (pokemonData.stats[0].base_stat) * 1, // Assuming HP is the first stat
               name: pokemonData.name
             };
 
@@ -375,7 +382,6 @@ function getPokemonDetails(myPokemonId) {
   });
 }
 
-// Usage
 let myPokemon = [];
 
 getPokemonDetails(myPokemonId)
@@ -405,40 +411,121 @@ getPokemonDetails(enemyPokemonId)
 
 move1.addEventListener('click', () => {
     enemyPokemon.HP -= myPokemon.moves[0].power;
-    myPokemon.HP -= enemyPokemon.moves[Math.floor(Math.random() * 4)].power;
+    const enemyMove = Math.floor(Math.random() * 4)
+    myPokemon.HP -= enemyPokemon.moves[enemyMove].power;
     console.log(enemyPokemon.HP);
     console.log(myPokemon.HP);
-    gsap.to('#')
-});
-move2.addEventListener('click', () => {
-  enemyPokemon.HP -= myPokemon.moves[1].power;
-  myPokemon.HP -= enemyPokemon.moves[Math.floor(Math.random() * 4)].power;
-  console.log(enemyPokemon.HP);
-  console.log(myPokemon.HP);
-});
-move3.addEventListener('click', () => {
-  enemyPokemon.HP -= myPokemon.moves[2].power;
-  myPokemon.HP -= enemyPokemon.moves[Math.floor(Math.random() * 4)].power;
-  console.log(enemyPokemon.HP);
-  console.log(myPokemon.HP);
-});
-move4.addEventListener('click', () => {
-  enemyPokemon.HP -= myPokemon.moves[3].power;
-  myPokemon.HP -= enemyPokemon.moves[Math.floor(Math.random() * 4)].power;
-  console.log(enemyPokemon.HP);
-  console.log(myPokemon.HP);
+    attacks.classList.remove('active')
+    attackDisplay.classList.add('active')
+    attackDisplay.innerHTML = `
+    <h1>${capitalizeFirstLetter(myPokemon.name)} used ${capitalizeFirstLetter(myPokemon.moves[0].name)} and gave ${myPokemon.moves[0].power} damage.</h1>
+    <h1>${capitalizeFirstLetter(enemyPokemon.name)} used ${capitalizeFirstLetter(enemyPokemon.moves[enemyMove].name)} and gave ${enemyPokemon.moves[enemyMove].power} damage.</h1>
+    `
+    setTimeout(() => {
+      attackDisplay.classList.remove('active');
+      attacks.classList.add('active')
+  }, 3000);
 });
 
+
+move2.addEventListener('click', () => {
+    enemyPokemon.HP -= myPokemon.moves[1].power;
+    const enemyMove = Math.floor(Math.random() * 4)
+    myPokemon.HP -= enemyPokemon.moves[enemyMove].power;
+    console.log(enemyPokemon.HP);
+    console.log(myPokemon.HP);
+    attacks.classList.remove('active')
+    attackDisplay.classList.add('active')
+    attackDisplay.innerHTML = `
+    <h1>${capitalizeFirstLetter(myPokemon.name)} used ${capitalizeFirstLetter(myPokemon.moves[1].name)} and gave ${myPokemon.moves[1].power} damage.</h1>
+    <h1>${capitalizeFirstLetter(enemyPokemon.name)} used ${capitalizeFirstLetter(enemyPokemon.moves[enemyMove].name)} and gave ${enemyPokemon.moves[enemyMove].power} damage.</h1>
+    `
+    setTimeout(() => {
+      attackDisplay.classList.remove('active');
+      attacks.classList.add('active')
+  }, 3000);
+});
+move3.addEventListener('click', () => {
+    enemyPokemon.HP -= myPokemon.moves[2].power;
+    const enemyMove = Math.floor(Math.random() * 4)
+    myPokemon.HP -= enemyPokemon.moves[enemyMove].power;
+    console.log(enemyPokemon.HP);
+    console.log(myPokemon.HP);
+    attacks.classList.remove('active')
+    attackDisplay.classList.add('active')
+    attackDisplay.innerHTML = `
+    <h1>${capitalizeFirstLetter(myPokemon.name)} used ${capitalizeFirstLetter(myPokemon.moves[2].name)} and gave ${myPokemon.moves[2].power} damage.</h1>
+    <h1>${capitalizeFirstLetter(enemyPokemon.name)} used ${capitalizeFirstLetter(enemyPokemon.moves[enemyMove].name)} and gave ${enemyPokemon.moves[enemyMove].power} damage.</h1>
+    `
+    setTimeout(() => {
+      attackDisplay.classList.remove('active');
+      attacks.classList.add('active')
+  }, 3000);
+});
+move4.addEventListener('click', () => {
+    enemyPokemon.HP -= myPokemon.moves[3].power;
+    const enemyMove = Math.floor(Math.random() * 4)
+    myPokemon.HP -= enemyPokemon.moves[enemyMove].power;
+    console.log(enemyPokemon.HP);
+    console.log(myPokemon.HP);
+    attacks.classList.remove('active')
+    attackDisplay.classList.add('active')
+    attackDisplay.innerHTML = `
+    <h1>${capitalizeFirstLetter(myPokemon.name)} used ${capitalizeFirstLetter(myPokemon.moves[3].name)} and gave ${myPokemon.moves[3].power} damage.</h1>
+    <h1>${capitalizeFirstLetter(enemyPokemon.name)} used ${capitalizeFirstLetter(enemyPokemon.moves[enemyMove].name)} and gave ${enemyPokemon.moves[enemyMove].power} damage.</h1>
+    `
+    setTimeout(() => {
+      attackDisplay.classList.remove('active');
+      attacks.classList.add('active')
+  }, 3000);
+});
+
+let battleAnimationId
+
 function animateBattle(){
-  window.requestAnimationFrame(animateBattle)
+  battleAnimationId = window.requestAnimationFrame(animateBattle)
   battleBackground.draw()
   c.drawImage(myPokemonBackImg,150,200,325,325)
   c.drawImage(enemyPokemonImg, 650, 120, 250, 250)
+  attacks.classList.add('active')
   move1.innerHTML = capitalizeFirstLetter(myPokemon.moves[0].name);
   
   move2.innerHTML = capitalizeFirstLetter(myPokemon.moves[1].name);
   move3.innerHTML = capitalizeFirstLetter(myPokemon.moves[2].name);
   move4.innerHTML = capitalizeFirstLetter(myPokemon.moves[3].name);
+
+  if(myPokemon.HP<0 && enemyPokemon.HP>0){
+    battle.initiated= false
+    attacks.classList.remove('active')
+    attackDisplay.classList.add('active')
+    attackDisplay.innerHTML = `You Lost!`
+    movables.forEach((movable)=>{
+      movable.position.x = -1150
+      movable.position.y  = -340
+    })
+    setTimeout(()=>{
+      attacks.classList.remove('active')
+      attackDisplay.classList.remove('active')
+      window.cancelAnimationFrame(battleAnimationId)
+      animate()
+    },3000)
+  }
+  else if(enemyPokemon.HP<0){
+    battle.initiated= false
+    attacks.classList.remove('active')
+    attackDisplay.classList.add('active')
+    attackDisplay.innerHTML = `You Win!`
+    movables.forEach((movable)=>{
+      movable.position.x = -1150
+      movable.position.y  = -340
+    })
+    setTimeout(()=>{
+      attacks.classList.remove('active')
+      attackDisplay.classList.remove('active')
+      window.cancelAnimationFrame(battleAnimationId)
+      animate()
+    },3000)
+  }
 }
 
 lastkey= ''
