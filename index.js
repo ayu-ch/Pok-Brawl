@@ -366,7 +366,7 @@ function getPokemonDetails(myPokemonId) {
             const moves = moveDetails.map(move => ({ name: move.name, power: move.power }));
             const myPokemon = {
               moves: moves,
-              HP: (pokemonData.stats[0].base_stat) * 1, // Assuming HP is the first stat
+              HP: (pokemonData.stats[0].base_stat) * 10, 
               name: pokemonData.name
             };
 
@@ -499,15 +499,20 @@ function animateBattle(){
     attacks.classList.remove('active')
     attackDisplay.classList.add('active')
     attackDisplay.innerHTML = `You Lost!`
-    movables.forEach((movable)=>{
-      movable.position.x = -1150
-      movable.position.y  = -340
-    })
+    
     setTimeout(()=>{
       attacks.classList.remove('active')
       attackDisplay.classList.remove('active')
-      window.cancelAnimationFrame(battleAnimationId)
-      animate()
+      gsap.to('.battle', {
+        opacity:1 ,
+        onComplete(){
+          cancelAnimationFrame(battleAnimationId)
+          animate()
+              gsap.to('.battle',{
+                opacity:0,
+              })
+            }
+           })
     },3000)
   }
   else if(enemyPokemon.HP<0){
@@ -515,15 +520,20 @@ function animateBattle(){
     attacks.classList.remove('active')
     attackDisplay.classList.add('active')
     attackDisplay.innerHTML = `You Win!`
-    movables.forEach((movable)=>{
-      movable.position.x = -1150
-      movable.position.y  = -340
-    })
+    
     setTimeout(()=>{
       attacks.classList.remove('active')
       attackDisplay.classList.remove('active')
-      window.cancelAnimationFrame(battleAnimationId)
-      animate()
+      gsap.to('.battle', {
+        opacity:1 ,
+        onComplete(){
+          cancelAnimationFrame(battleAnimationId)
+          animate()
+              gsap.to('.battle',{
+                opacity:0,
+              })
+            }
+           })
     },3000)
   }
 }
