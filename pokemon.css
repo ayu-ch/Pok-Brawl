@@ -1,0 +1,239 @@
+.pokedex-button{
+  background:url(assets/images/Poké_Ball_icon.svg) no-repeat;
+  cursor:pointer;
+  border:none;
+  width:10em;
+  height:10em;
+  position: fixed;
+  bottom: 2em;
+  left: 2em;
+}
+
+
+
+.modal{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%) scale(0);
+  border: 1px solid black;
+  transition: 200ms ease-in-out;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: 	#ff0000;
+  width: 100em;
+  max-width: 80%;
+}
+
+body{
+  background-color: #282828;
+}
+
+.modal.active{
+  transform: translate(-50%,-50%) scale(1);
+}
+
+.modal-header {
+  padding: 1em 5em;
+  border-bottom: 0.25em solid 	#3b4cca;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.modal-header img {
+  margin: 0;
+}
+
+.modal-header .close-button {
+  cursor: pointer;
+  -webkit-text-stroke-width: 0.05em;
+  -webkit-text-stroke-color: #3b4cca;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #FFCE31;
+}
+
+
+.modal-body {
+  background-color: 	#333333;
+  padding: 0 3em;
+  max-height: 70vh; /* Maximum height for the modal body */
+  overflow-y: auto; /* Enable vertical scrolling if content exceeds the height */
+}
+
+.pokedex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.list-item {
+
+  border-radius: 1em;
+  background-color: white;
+  flex: 1 1 200px; 
+  display: flex; 
+  flex-direction: column; 
+  border: 0.5em solid rgb(229, 214, 7);
+  margin: 1em 0.5em;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.img-wrap {
+  flex: 1; 
+  display: flex; 
+  justify-content: center; 
+}
+
+.img-wrap img {
+  max-width: 100%;
+  height: auto;
+}
+
+#overlay{
+  position: fixed;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,.25);
+  pointer-events: none;
+}
+
+#overlay.active{
+  opacity: 1;
+  pointer-events: all;
+}
+
+
+
+canvas{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+}
+.battle{
+  background-color: black;
+  width: 1024px;
+  height: 576px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  opacity: 0;
+}
+
+
+.instructions{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%) scale(0);
+  border: 1px solid black;
+  transition: 200ms ease-in-out;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: 	#ff0000;
+  width: 100em;
+  max-width: 80%;
+}
+
+.instructions.active{
+  transform: translate(-50%,-50%) scale(1);
+}
+
+#starter{
+  -webkit-text-stroke-width: 0.07em;
+  -webkit-text-stroke-color: #3b4cca;
+  color: #FFCE31;
+  font-size: 1.5em;
+  text-align: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 60%;
+  transform: translate(-50%,-50%) scale(1);
+  border: 1px solid black;
+  transition: 200ms ease-in-out;
+  border-radius: 10px;
+  z-index: 10;
+  background-color: 	#ff0000;
+  width: 70em;
+  max-width: 70%;
+  
+}
+
+#starter.active{
+  transform: translate(-50%,-50%) scale(0);
+}
+
+#starter-pokemons{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.starters{
+  border-radius: 1em;
+  background-color: white;
+  flex: 1 1 200px; /* Adjust the width as needed */
+  display: flex;
+  flex-direction: column;
+  border: 0.5em solid rgb(229, 214, 7);
+  margin: 1em 0.5em;
+  text-align: center;
+  box-sizing: border-box;
+  height: 13em;
+  margin: 2em;
+}
+
+#attacks{
+  position: fixed;
+  background-color: white;
+  border-top: 4px black solid;
+  top: 80%;
+  left: 50%;
+  width: 1024px;
+  height: 200px;
+  transform: translate(-50%,-50%);
+  display: flex;
+}
+
+#moves{
+  width: 66.66%;
+  border-right: 2px black solid;
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+}
+
+#leave-battle{
+  width: 33.34%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  
+}
+
+#leave-battle button{
+  width: 100%;
+}
+
+#attack-display{
+  position: fixed;
+  background-color: white;
+  border-top: 4px black solid;
+  top: 80%;
+  left: 50%;
+  width: 1024px;
+  height: 200px;
+  transform: translate(-50%,-50%);
+}

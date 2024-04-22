@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PokeBrawl</title>
+  <link rel="stylesheet" href="pokemon.css">
+  
+</head>
+<body>
+  <div id="starter">
+    <h1>Select your starter pokemon</h1>
+    <div id="starter-pokemons">
+      
+    </div>
+  </div>
+  <div style="display: inline-block; position: relative" class="game">
+      <canvas></canvas>
+      <div class="battle"></div>
+      <div id="attacks">
+        <div id="moves">
+          <button id="move1"></button>
+          <button id="move2"></button>
+          <button id="move3"></button>
+          <button id="move4"></button>
+        </div>
+        <div id="leave-battle">
+          <button>Leave</button>
+        </div>
+
+        <div id="attack-display">
+          <h1></h1>
+      </div>
+
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js" integrity="sha512-H6cPm97FAsgIKmlBA4s774vqoN24V5gSQL4yBTDOY2su2DeXZVhQPxFK4P6GPdnZqM9fg1G3cMv5wD7e6cFLZQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>  
+  <script src="battlezone.js"></script>
+  <script src="collision.js"></script>
+  <script src="index.js"></script>
+  
+  
+  <button data-modal-target="#modal" class="pokedex-button"></button>
+  <div class="modal" id="modal">
+    <div class="modal-header">
+      <img src="assets/images/Pokédex_logo.png">
+      <button data-close-button class="close-button"><p>&times;</p></button>
+    </div>
+    <div class="modal-body">
+      <div id="pokedex" class="pokedex"></div>
+    </div>
+  </div>
+  <button id="instruction-button">Instructions</button>
+  <div class="instructions">
+    <h1>HI</h1>
+    <button data-close-button class="close-button" id="close-instructions"><p>&times;</p></button>
+  </div>
+  <div id="overlay"></div>
+  <script src="pokedex.js" defer></script>
+</body>
+</html>
