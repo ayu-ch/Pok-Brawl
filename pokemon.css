@@ -133,22 +133,66 @@ canvas{
 }
 
 
-.instructions{
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%) scale(0);
-  border: 1px solid black;
-  transition: 200ms ease-in-out;
-  border-radius: 10px;
-  z-index: 10;
-  background-color: 	#ff0000;
-  width: 100em;
-  max-width: 80%;
+#instruction-button {
+  background-color: #4CAF50; 
+  color: white; 
+  border: none; 
+  padding: 15px 32px;
+  text-align: center; 
+  text-decoration: none; 
+  display: inline-block; 
+  font-size: 16px; 
+  cursor: pointer; 
+  margin: 4px 2px; 
+  border-radius: 5px; 
+}
+
+#instruction-button:hover {
+  background-color: #45A049; 
 }
 
 .instructions.active{
   transform: translate(-50%,-50%) scale(1);
+}
+
+.instructions {
+  position: fixed;
+  top: 50%; 
+  left: 50%; 
+  transform: translate(-50%, -50%) scale(0); 
+  display: flex; 
+  justify-content: center;
+  align-items: center; 
+  background-color: rgba(0, 0, 0, 0.7); 
+  color: white; 
+  padding: 20px;
+  border-radius: 5px; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); 
+  font-family: sans-serif; 
+  text-align: center; 
+  max-width: 500px; 
+  z-index: 10; 
+}
+
+.instructions h1 {
+  margin-top: 0; 
+  margin-bottom: 10px;
+  font-size: 1.2em; 
+}
+
+.close-button {
+  position: absolute; 
+  top: 10px;
+  right: 10px; 
+  background-color: transparent; 
+  border: none; 
+  cursor: pointer; 
+}
+
+.close-button p {
+  color: white;
+  font-size: 20px; 
+  line-height: 0;
 }
 
 #starter{
@@ -161,7 +205,7 @@ canvas{
   top: 50%;
   left: 50%;
   height: 60%;
-  transform: translate(-50%,-50%) scale(1);
+  transform: translate(-50%,-50%) scale(0);
   border: 1px solid black;
   transition: 200ms ease-in-out;
   border-radius: 10px;
@@ -173,7 +217,7 @@ canvas{
 }
 
 #starter.active{
-  transform: translate(-50%,-50%) scale(0);
+  transform: translate(-50%,-50%) scale(1);
 }
 
 #starter-pokemons{
@@ -240,8 +284,80 @@ canvas{
   width: 1024px;
   height: 200px;
   transform: translate(-50%,-50%) scale(0);
+  text-align: center;
 }
 
 #attack-display.active{
   transform: translate(-50%,-50%) scale(1);
+}
+
+#myHP{
+  position: fixed;
+  background-color: white;
+  border-top: 4px black solid;
+  top: 20%;
+  left: 25%;
+  width: 300px;
+  height: 100px;
+  transform: scale(0);
+  text-align: center;
+  border-radius: 2em;
+  border: 4px black solid;
+}
+
+#myHP.active{
+  transform: scale(1);
+}
+
+#enemyHP{
+  position: fixed;
+  background-color: white;
+  border-top: 4px black solid;
+  top: 20%;
+  left: 60%;
+  width: 300px;
+  height: 100px;
+  transform: scale(0);
+  text-align: center;
+  border-radius: 2em;
+  border: 4px black solid;
+}
+
+#enemyHP.active{
+  transform: scale(1);
+}
+
+#myHP h1{
+  font-size: 1.5em;
+}
+
+#enemyHP h1{
+  font-size:1.5em;
+}
+
+.circle-container {
+  position: absolute;
+  width: 4em; /* Adjust size as needed */
+  height: 4em; /* Adjust size as needed */
+  top: 0;
+  left: 96%;
+  padding-top: 2em;
+
+}
+
+.circle {
+  position: absolute;
+  
+  width: 4em; /* Adjust size as needed */
+  height: 4em; /* Adjust size as needed */
+  background-color: #f00; /* Circle color */
+  border-radius: 50%; /* Make it a circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.number {
+  color: #fff; /* Number color */
+  font-size: 3em; /* Adjust font size as needed */
 }

@@ -3,16 +3,18 @@ const c = canvas.getContext('2d')
 canvas.width = 1024
 canvas.height = 576
 
+var pokemonLevel = parseInt(localStorage.getItem('level'))
 const myPokemonId = localStorage.getItem('starter');
 const attackDisplay = document.getElementById('attack-display')
 const attacks = document.getElementById('attacks')
-
+const myHP = document.getElementById('myHP')
+const enemyHP = document.getElementById('enemyHP')
 //moves
 const move1 = document.getElementById('move1')
 const move2 = document.getElementById('move2')
 const move3 = document.getElementById('move3')
 const move4 = document.getElementById('move4')
-
+const leave_button = document.getElementById('leave')
 
 const collisionsMap = []
 for (let i = 0 ; i < collisions.length; i +=70){
@@ -36,7 +38,7 @@ class Boundary {
   }
 
   draw(){
-    c.fillStyle = 'rgba(255,0,0,0.2)'
+    c.fillStyle = 'rgba(255,0,0,0)'
     c.fillRect(this.position.x,this.position.y,this.width,this.height)
   }
 }
@@ -480,6 +482,17 @@ move4.addEventListener('click', () => {
   }, 3000);
 });
 
+leave_button.addEventListener('click', () => {
+  attacks.classList.remove('active')
+  attackDisplay.classList.add('active')
+  attackDisplay.innerHTML = 'You left the battle'
+  setTimeout(() => {
+    attackDisplay.classList.remove('active');
+    attacks.classList.add('active')
+    window.location.reload();
+}, 3000);
+})
+
 let battleAnimationId
 
 function animateBattle(){
@@ -488,13 +501,24 @@ function animateBattle(){
   c.drawImage(myPokemonBackImg,150,200,325,325)
   c.drawImage(enemyPokemonImg, 650, 120, 250, 250)
   attacks.classList.add('active')
+  myHP.classList.add('active')
+  enemyHP.classList.add('active')
+
+  myHP.innerHTML = `
+  <h1>${capitalizeFirstLetter(myPokemon.name)}</h1>
+  <h1>HP : ${myPokemon.HP}</h1>
+  `
+  enemyHP.innerHTML = `
+  <h1>${capitalizeFirstLetter(enemyPokemon.name)}</h1>
+  <h1>HP : ${enemyPokemon.HP}</h1>
+  `
+
   move1.innerHTML = capitalizeFirstLetter(myPokemon.moves[0].name);
-  
   move2.innerHTML = capitalizeFirstLetter(myPokemon.moves[1].name);
   move3.innerHTML = capitalizeFirstLetter(myPokemon.moves[2].name);
   move4.innerHTML = capitalizeFirstLetter(myPokemon.moves[3].name);
 
-  if(myPokemon.HP<0 && enemyPokemon.HP>0){
+  if(myPokemon.HP<=0 && enemyPokemon.HP>0){
     battle.initiated= false
     attacks.classList.remove('active')
     attackDisplay.classList.add('active')
@@ -513,17 +537,24 @@ function animateBattle(){
               })
             }
            })
+           window.location.reload();
     },3000)
   }
-  else if(enemyPokemon.HP<0){
+  else if(enemyPokemon.HP<=0){
+    
     battle.initiated= false
     attacks.classList.remove('active')
     attackDisplay.classList.add('active')
-    attackDisplay.innerHTML = `You Win!`
+    localStorage.setItem('level',parseInt(pokemonLevel)+1)
+    
+    
+    attackDisplay.innerHTML = `You Win!
+    You are now Level ${pokemonLevel+1}`
     
     setTimeout(()=>{
       attacks.classList.remove('active')
       attackDisplay.classList.remove('active')
+      
       gsap.to('.battle', {
         opacity:1 ,
         onComplete(){
@@ -534,6 +565,10 @@ function animateBattle(){
               })
             }
            })
+           
+           window.location.reload();
+           
+           
     },3000)
   }
 }

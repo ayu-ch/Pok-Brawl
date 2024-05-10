@@ -14,9 +14,18 @@
       
     </div>
   </div>
+
+  <div class="circle-container">
+    <div class="circle">
+      <span class="number" id="levelNumber"></span>
+    </div>
+  </div>
+
   <div style="display: inline-block; position: relative" class="game">
       <canvas></canvas>
       <div class="battle"></div>
+      <div id="myHP">MY</div>
+      <div id="enemyHP">ENEMY</div>
       <div id="attacks">
         <div id="moves">
           <button id="move1"></button>
@@ -25,7 +34,7 @@
           <button id="move4"></button>
         </div>
         <div id="leave-battle">
-          <button>Leave</button>
+          <button id="leave">Leave</button>
         </div>
       </div>
         <div id="attack-display">
@@ -51,8 +60,11 @@
   </div>
   <button id="instruction-button">Instructions</button>
   <div class="instructions">
-    <h1>HI</h1>
     <button data-close-button class="close-button" id="close-instructions"><p>&times;</p></button>
+    <h1>After choosing the starter pokemon, you can on the map using the arrow keys and find a pokemon in the dark grass.</h1>
+    <h1>The top right circle shows your level. Your Level increases everytime you defeat a pokemon.</h1>
+    <h1>You can see Pokemons in the pokedex in the bottom right corner.</h1>
+    
   </div>
   <div id="overlay"></div>
   <script src="pokedex.js" defer></script>
