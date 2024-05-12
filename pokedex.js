@@ -9,7 +9,10 @@ const closeInstructionsButton = document.getElementById('close-instructions')
 const level = localStorage.getItem('level');
 document.getElementById('levelNumber').textContent = level;
 
-
+document.getElementById('reset').addEventListener('click', function() {
+  localStorage.clear();
+  window.location.reload()
+});
 
 
 openModalButtons.forEach(button => {
