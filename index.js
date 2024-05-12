@@ -412,9 +412,21 @@ getPokemonDetails(enemyPokemonId)
 
 
 move1.addEventListener('click', () => {
+  const enemyMove = Math.floor(Math.random() * 4)
+  if ((enemyPokemon.HP - myPokemon.moves[0].power)<=0){
+    enemyPokemon.HP=0
+  } 
+  else{
     enemyPokemon.HP -= myPokemon.moves[0].power;
-    const enemyMove = Math.floor(Math.random() * 4)
-    myPokemon.HP -= enemyPokemon.moves[enemyMove].power;
+    if((myPokemon.HP - enemyPokemon.moves[enemyMove].power)<=0){
+      myPokemon.HP=0
+    }
+    else{
+      myPokemon.HP -= enemyPokemon.moves[enemyMove].power;
+    }
+  }
+    
+    
     console.log(enemyPokemon.HP);
     console.log(myPokemon.HP);
     attacks.classList.remove('active')
@@ -431,9 +443,19 @@ move1.addEventListener('click', () => {
 
 
 move2.addEventListener('click', () => {
-    enemyPokemon.HP -= myPokemon.moves[1].power;
     const enemyMove = Math.floor(Math.random() * 4)
-    myPokemon.HP -= enemyPokemon.moves[enemyMove].power;
+    if ((enemyPokemon.HP - myPokemon.moves[1].power)<=0){
+      enemyPokemon.HP=0
+    } 
+    else{
+      enemyPokemon.HP -= myPokemon.moves[1].power;
+      if((myPokemon.HP - enemyPokemon.moves[enemyMove].power)<=0){
+        myPokemon.HP=0
+      }
+      else{
+        myPokemon.HP -= enemyPokemon.moves[enemyMove].power;
+      }
+    }
     console.log(enemyPokemon.HP);
     console.log(myPokemon.HP);
     attacks.classList.remove('active')
@@ -448,9 +470,19 @@ move2.addEventListener('click', () => {
   }, 3000);
 });
 move3.addEventListener('click', () => {
-    enemyPokemon.HP -= myPokemon.moves[2].power;
     const enemyMove = Math.floor(Math.random() * 4)
-    myPokemon.HP -= enemyPokemon.moves[enemyMove].power;
+    if ((enemyPokemon.HP - myPokemon.moves[2].power)<=0){
+      enemyPokemon.HP=0
+    } 
+    else{
+      enemyPokemon.HP -= myPokemon.moves[2].power;
+      if((myPokemon.HP - enemyPokemon.moves[enemyMove].power)<=0){
+        myPokemon.HP=0
+      }
+      else{
+        myPokemon.HP -= enemyPokemon.moves[enemyMove].power;
+      }
+    }
     console.log(enemyPokemon.HP);
     console.log(myPokemon.HP);
     attacks.classList.remove('active')
@@ -465,9 +497,20 @@ move3.addEventListener('click', () => {
   }, 3000);
 });
 move4.addEventListener('click', () => {
-    enemyPokemon.HP -= myPokemon.moves[3].power;
+    
     const enemyMove = Math.floor(Math.random() * 4)
-    myPokemon.HP -= enemyPokemon.moves[enemyMove].power;
+    if ((enemyPokemon.HP - myPokemon.moves[3].power)<=0){
+      enemyPokemon.HP=0
+    } 
+    else{
+      enemyPokemon.HP -= myPokemon.moves[3].power;
+      if((myPokemon.HP - enemyPokemon.moves[enemyMove].power)<=0){
+        myPokemon.HP=0
+      }
+      else{
+        myPokemon.HP -= enemyPokemon.moves[enemyMove].power;
+      }
+    }
     console.log(enemyPokemon.HP);
     console.log(myPokemon.HP);
     attacks.classList.remove('active')
@@ -519,6 +562,7 @@ function animateBattle(){
   move4.innerHTML = capitalizeFirstLetter(myPokemon.moves[3].name);
 
   if(myPokemon.HP<=0 && enemyPokemon.HP>0){
+    myPokemon.HP==0
     battle.initiated= false
     attacks.classList.remove('active')
     attackDisplay.classList.add('active')
