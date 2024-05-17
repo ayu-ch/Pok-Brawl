@@ -119,7 +119,7 @@ function starterPokemon(){
   }
   for (let i = 0 ; i<7; i+=3){
     
-    console.log(allPokemon[i]["name"])
+    // console.log(allPokemon[i]["name"])
     const starter = document.createElement("div")
     starter.className = 'starters'
     starter.classList.add(`starter${i+1}`)
@@ -142,6 +142,7 @@ function starterPokemon(){
       localStorage.setItem('starter', i + 1);
       localStorage.setItem('level',1)
       starterDiv.classList.remove('active');
+      window.location.reload();
     });
   }  
 }

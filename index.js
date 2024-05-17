@@ -26,7 +26,7 @@ for (let i = 0 ; i < battleZoneData.length; i +=70){
   battleZoneMap.push(battleZoneData.slice(i,i+70))
 }
 
-console.log(battleZoneMap)
+// console.log(battleZoneMap)
 
 class Boundary {
   static width = 48
@@ -92,8 +92,8 @@ class Sprite {
     this.image.onload = () =>{
       this.width = this.image.width / this.frames.max
       this.height = this.image.height
-      console.log(this.width)
-      console.log(this.height)
+      // console.log(this.width)
+      // console.log(this.height)
     }
   }
 
@@ -193,7 +193,7 @@ function animate(){
         rectangle1:player,
         rectangle2:battleZone
       }) && Math.random()< 0.001){
-        console.log('battle')
+        // console.log('battle')
         window.cancelAnimationFrame(animationId)
         battle.initiated= true
         gsap.to('.battle', {
@@ -233,7 +233,7 @@ function animate(){
           y:boundary.position.y+3
         }}
       })){
-        console.log('colliding')
+        // console.log('colliding')
         moving = false
         break
       }
@@ -255,7 +255,7 @@ function animate(){
           y:boundary.position.y-3
         }}
       })){
-        console.log('colliding')
+        // console.log('colliding')
         moving = false
         break
       }
@@ -277,7 +277,7 @@ function animate(){
           y:boundary.position.y
         }}
       })){
-        console.log('colliding')
+        // console.log('colliding')
         moving = false
         break
       }
@@ -299,7 +299,7 @@ function animate(){
           y:boundary.position.y
         }}
       })){
-        console.log('colliding')
+        // console.log('colliding')
         moving = false
         break
       }
@@ -389,7 +389,7 @@ let myPokemon = [];
 getPokemonDetails(myPokemonId)
   .then(data => {
     myPokemon = data; // Assign the returned data to myPokemon array
-    console.log(myPokemon);
+    // console.log(myPokemon);
   })
   .catch(error => {
     console.error('Error:', error);
@@ -404,7 +404,7 @@ enemyPokemonImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/
 getPokemonDetails(enemyPokemonId)
   .then(data => {
     enemyPokemon = data; // Assign the returned data to myPokemon array
-    console.log(enemyPokemon);
+    // console.log(enemyPokemon);
   })
   .catch(error => {
     console.error('Error:', error);
@@ -427,8 +427,8 @@ move1.addEventListener('click', () => {
   }
     
     
-    console.log(enemyPokemon.HP);
-    console.log(myPokemon.HP);
+    // console.log(enemyPokemon.HP);
+    // console.log(myPokemon.HP);
     attacks.classList.remove('active')
     attackDisplay.classList.add('active')
     attackDisplay.innerHTML = `
@@ -456,8 +456,8 @@ move2.addEventListener('click', () => {
         myPokemon.HP -= enemyPokemon.moves[enemyMove].power;
       }
     }
-    console.log(enemyPokemon.HP);
-    console.log(myPokemon.HP);
+    // console.log(enemyPokemon.HP);
+    // console.log(myPokemon.HP);
     attacks.classList.remove('active')
     attackDisplay.classList.add('active')
     attackDisplay.innerHTML = `
@@ -483,8 +483,8 @@ move3.addEventListener('click', () => {
         myPokemon.HP -= enemyPokemon.moves[enemyMove].power;
       }
     }
-    console.log(enemyPokemon.HP);
-    console.log(myPokemon.HP);
+    // console.log(enemyPokemon.HP);
+    // console.log(myPokemon.HP);
     attacks.classList.remove('active')
     attackDisplay.classList.add('active')
     attackDisplay.innerHTML = `
@@ -511,8 +511,8 @@ move4.addEventListener('click', () => {
         myPokemon.HP -= enemyPokemon.moves[enemyMove].power;
       }
     }
-    console.log(enemyPokemon.HP);
-    console.log(myPokemon.HP);
+    // console.log(enemyPokemon.HP);
+    // console.log(myPokemon.HP);
     attacks.classList.remove('active')
     attackDisplay.classList.add('active')
     attackDisplay.innerHTML = `
@@ -619,7 +619,7 @@ function animateBattle(){
 
 lastkey= ''
 window.addEventListener('keydown', (e) => {
-  console.log(e.key)
+  
 
   switch(e.key){
     case 'ArrowLeft':
@@ -643,7 +643,7 @@ window.addEventListener('keydown', (e) => {
 })
 
 window.addEventListener('keyup', (e) => {
-  console.log(e.key)
+  // console.log(e.key)
 
   switch(e.key){
     case 'ArrowLeft':
