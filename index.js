@@ -413,11 +413,11 @@ getPokemonDetails(enemyPokemonId)
 
 move1.addEventListener('click', () => {
   const enemyMove = Math.floor(Math.random() * 4)
-  if ((enemyPokemon.HP - myPokemon.moves[0].power)<=0){
+  if ((enemyPokemon.HP - parseInt(myPokemon.moves[0].power*1.5))<=0){
     enemyPokemon.HP=0
   } 
   else{
-    enemyPokemon.HP -= myPokemon.moves[0].power;
+    enemyPokemon.HP -= parseInt(myPokemon.moves[0].power*1.5);
     if((myPokemon.HP - enemyPokemon.moves[enemyMove].power)<=0){
       myPokemon.HP=0
     }
@@ -432,7 +432,7 @@ move1.addEventListener('click', () => {
     attacks.classList.remove('active')
     attackDisplay.classList.add('active')
     attackDisplay.innerHTML = `
-    <h1>${capitalizeFirstLetter(myPokemon.name)} used ${capitalizeFirstLetter(myPokemon.moves[0].name)} and gave ${myPokemon.moves[0].power} damage.</h1>
+    <h1>${capitalizeFirstLetter(myPokemon.name)} used ${capitalizeFirstLetter(myPokemon.moves[0].name)} and gave ${parseInt(myPokemon.moves[0].power*1.5)} damage.</h1>
     <h1>${capitalizeFirstLetter(enemyPokemon.name)} used ${capitalizeFirstLetter(enemyPokemon.moves[enemyMove].name)} and gave ${enemyPokemon.moves[enemyMove].power} damage.</h1>
     `
     setTimeout(() => {
@@ -444,11 +444,11 @@ move1.addEventListener('click', () => {
 
 move2.addEventListener('click', () => {
     const enemyMove = Math.floor(Math.random() * 4)
-    if ((enemyPokemon.HP - myPokemon.moves[1].power)<=0){
+    if ((enemyPokemon.HP - parseInt(myPokemon.moves[1].power*1.5))<=0){
       enemyPokemon.HP=0
     } 
     else{
-      enemyPokemon.HP -= myPokemon.moves[1].power;
+      enemyPokemon.HP -= parseInt(myPokemon.moves[1].power*1.5);
       if((myPokemon.HP - enemyPokemon.moves[enemyMove].power)<=0){
         myPokemon.HP=0
       }
@@ -461,7 +461,7 @@ move2.addEventListener('click', () => {
     attacks.classList.remove('active')
     attackDisplay.classList.add('active')
     attackDisplay.innerHTML = `
-    <h1>${capitalizeFirstLetter(myPokemon.name)} used ${capitalizeFirstLetter(myPokemon.moves[1].name)} and gave ${myPokemon.moves[1].power} damage.</h1>
+    <h1>${capitalizeFirstLetter(myPokemon.name)} used ${capitalizeFirstLetter(myPokemon.moves[1].name)} and gave ${parseInt(myPokemon.moves[1].power*1.5)} damage.</h1>
     <h1>${capitalizeFirstLetter(enemyPokemon.name)} used ${capitalizeFirstLetter(enemyPokemon.moves[enemyMove].name)} and gave ${enemyPokemon.moves[enemyMove].power} damage.</h1>
     `
     setTimeout(() => {
@@ -471,11 +471,11 @@ move2.addEventListener('click', () => {
 });
 move3.addEventListener('click', () => {
     const enemyMove = Math.floor(Math.random() * 4)
-    if ((enemyPokemon.HP - myPokemon.moves[2].power)<=0){
+    if ((enemyPokemon.HP - parseInt(myPokemon.moves[2].power*1.5))<=0){
       enemyPokemon.HP=0
     } 
     else{
-      enemyPokemon.HP -= myPokemon.moves[2].power;
+      enemyPokemon.HP -= parseInt(myPokemon.moves[2].power*1.5);
       if((myPokemon.HP - enemyPokemon.moves[enemyMove].power)<=0){
         myPokemon.HP=0
       }
@@ -488,7 +488,7 @@ move3.addEventListener('click', () => {
     attacks.classList.remove('active')
     attackDisplay.classList.add('active')
     attackDisplay.innerHTML = `
-    <h1>${capitalizeFirstLetter(myPokemon.name)} used ${capitalizeFirstLetter(myPokemon.moves[2].name)} and gave ${myPokemon.moves[2].power} damage.</h1>
+    <h1>${capitalizeFirstLetter(myPokemon.name)} used ${capitalizeFirstLetter(myPokemon.moves[2].name)} and gave ${parseInt(myPokemon.moves[2].power*1.5)} damage.</h1>
     <h1>${capitalizeFirstLetter(enemyPokemon.name)} used ${capitalizeFirstLetter(enemyPokemon.moves[enemyMove].name)} and gave ${enemyPokemon.moves[enemyMove].power} damage.</h1>
     `
     setTimeout(() => {
@@ -499,11 +499,11 @@ move3.addEventListener('click', () => {
 move4.addEventListener('click', () => {
     
     const enemyMove = Math.floor(Math.random() * 4)
-    if ((enemyPokemon.HP - myPokemon.moves[3].power)<=0){
+    if ((enemyPokemon.HP - parseInt(myPokemon.moves[3].power*1.5))<=0){
       enemyPokemon.HP=0
     } 
     else{
-      enemyPokemon.HP -= myPokemon.moves[3].power;
+      enemyPokemon.HP -= parseInt(myPokemon.moves[3].power*1.5);
       if((myPokemon.HP - enemyPokemon.moves[enemyMove].power)<=0){
         myPokemon.HP=0
       }
@@ -516,7 +516,7 @@ move4.addEventListener('click', () => {
     attacks.classList.remove('active')
     attackDisplay.classList.add('active')
     attackDisplay.innerHTML = `
-    <h1>${capitalizeFirstLetter(myPokemon.name)} used ${capitalizeFirstLetter(myPokemon.moves[3].name)} and gave ${myPokemon.moves[3].power} damage.</h1>
+    <h1>${capitalizeFirstLetter(myPokemon.name)} used ${capitalizeFirstLetter(myPokemon.moves[3].name)} and gave ${parseInt(myPokemon.moves[3].power*1.5)} damage.</h1>
     <h1>${capitalizeFirstLetter(enemyPokemon.name)} used ${capitalizeFirstLetter(enemyPokemon.moves[enemyMove].name)} and gave ${enemyPokemon.moves[enemyMove].power} damage.</h1>
     `
     setTimeout(() => {
