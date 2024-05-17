@@ -110,43 +110,44 @@ function capitalizeFirstLetter(string) {
 
 //starter
 const selectedStarter = localStorage.getItem('starter');
+function starterPokemon(){
+  const starterDiv = document.getElementById('starter');
+  starterDiv.classList.add('active')
+  const starter_pokemons = document.getElementById('starter-pokemons')
+  if (selectedStarter) {
+    starterDiv.classList.remove('active');
+  }
+  for (let i = 0 ; i<7; i+=3){
+    
+    console.log(allPokemon[i]["name"])
+    const starter = document.createElement("div")
+    starter.className = 'starters'
+    starter.classList.add(`starter${i+1}`)
+    starter.innerHTML=`
+    <div class="img-wrap">
+        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i+1}.png" />
+    </div>
+    <div class="name-wrap">
+        <p>${allPokemon[i]["name"]}</p>
+    </div>
+    `
+    starter_pokemons.appendChild(starter)
 
-if(!selectedStarter){
-  function starterPokemon(pokemonList){
-    const starterDiv = document.getElementById('starter');
-    starterDiv.classList.add('active')
-    const starter_pokemons = document.getElementById('starter-pokemons')
-    if (selectedStarter) {
+    if (selectedStarter && parseInt(selectedStarter) === i + 1) {
+      
       starterDiv.classList.remove('active');
     }
-    for (let i = 0 ; i<7; i+=3){
-      
-      console.log(allPokemon[i]["name"])
-      const starter = document.createElement("div")
-      starter.className = 'starters'
-      starter.classList.add(`starter${i+1}`)
-      starter.innerHTML=`
-      <div class="img-wrap">
-          <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i+1}.png" />
-      </div>
-      <div class="name-wrap">
-          <p>${allPokemon[i]["name"]}</p>
-      </div>
-      `
-      starter_pokemons.appendChild(starter)
 
-      if (selectedStarter && parseInt(selectedStarter) === i + 1) {
-        
-        starterDiv.classList.remove('active');
-      }
+    starter.addEventListener('click', () => {
+      localStorage.setItem('starter', i + 1);
+      localStorage.setItem('level',1)
+      starterDiv.classList.remove('active');
+    });
+  }  
+}
 
-      starter.addEventListener('click', () => {
-        localStorage.setItem('starter', i + 1);
-        localStorage.setItem('level',1)
-        starterDiv.classList.remove('active');
-      });
-    }  
-  }
+if(!selectedStarter){
+  starterPokemon()
 }
 
 
